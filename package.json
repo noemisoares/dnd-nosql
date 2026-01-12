@@ -1,0 +1,21 @@
+{
+  "name": "dnd-nosql",
+  "version": "1.0.0",
+  "description": "D&D 5e data stored in MongoDB via seed scripts and exposed through an Express API",
+  "main": "src/backend/server.js",
+  "scripts": {
+    "dev": "node src/backend/server.js",
+    "seed:spells": "node src/scripts/seedSpells.js",
+    "seed:monsters": "node src/scripts/seedMonsters.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.0",
+    "node-fetch": "^2.6.7"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
