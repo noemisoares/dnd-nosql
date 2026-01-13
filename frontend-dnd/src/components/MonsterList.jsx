@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import MonsterCard from './MonsterCard';
+import './MonsterList.css';
 
 function MonsterList() {
   const [monsters, setMonsters] = useState([]);
@@ -14,15 +15,17 @@ function MonsterList() {
   }, []);
 
   return (
-    <section>
+    <section className="list-section monster-list">
       <h2>Monstros</h2>
 
-      {monsters.map(monster => (
-        <MonsterCard
-          key={monster._id || monster.index}
-          monster={monster}
-        />
-      ))}
+      <div className="list-grid">
+        {monsters.map(monster => (
+          <MonsterCard
+            key={monster._id || monster.index}
+            monster={monster}
+          />
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SpellCard from './SpellCard';
+import './SpellList.css';
 
 function SpellList() {
   const [spells, setSpells] = useState([]);
@@ -14,15 +15,17 @@ function SpellList() {
   }, []);
 
   return (
-    <section>
+    <section className="list-section spell-list">
       <h2>Magias</h2>
 
-      {spells.map(spell => (
+      <div className="list-grid">
+        {spells.map(spell => (
         <SpellCard
           key={spell._id || spell.index}
           spell={spell}
         />
       ))}
+      </div>
     </section>
   );
 }

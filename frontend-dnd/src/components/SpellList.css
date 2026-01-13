@@ -1,0 +1,38 @@
+.list-section.spell-list { }
+
+.list-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .list-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-card), rgba(28,28,28,0.9));
+  border: 1px solid var(--border-card);
+  padding: 14px;
+  border-radius: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--glow-gold);
+  border-color: var(--accent-red);
+}
+
+.card-icon { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex: 0 0 52px; }
+
+.card-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: var(--accent-gold);
+}
+
+.card-sub { font-size: 0.9rem; color: var(--text-muted); margin:0; }

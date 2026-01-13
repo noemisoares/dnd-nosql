@@ -1,0 +1,37 @@
+.list-section.monster-list { }
+
+.list-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .list-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1000px) {
+  .monster-list .list-grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(28,28,28,0.95), var(--bg-card));
+  border: 1px solid var(--border-card);
+  padding: 14px;
+  border-radius: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(192, 50, 50, 0.08);
+  border-color: var(--accent-red);
+}
+
+.card-icon { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; flex: 0 0 56px; }
+
+.card-info h3 { margin: 0 0 4px 0; font-size: 1.1rem; color: var(--accent-gold); }
+.card-sub { font-size: 0.9rem; color: var(--text-muted); margin:0; }
