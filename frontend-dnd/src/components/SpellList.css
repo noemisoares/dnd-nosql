@@ -27,7 +27,33 @@
   border-color: var(--accent-red);
 }
 
-.card-icon { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex: 0 0 52px; }
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  flex: 0 0 52px;
+
+  background-color: var(--accent-gold);
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  transition: background-color 0.25s ease, filter 0.25s ease;
+}
+
+.spell-icon.evocation { background-color: #c0392b; }
+.spell-icon.necromancy { background-color: #5b2c6f; }
+.spell-icon.abjuration { background-color: #1e8449; }
+.spell-icon.conjuration { background-color: #2471a3; }
+.spell-icon.divination { background-color: #f1c40f; }
+.spell-icon.illusion { background-color: #884ea0; }
+.spell-icon.enchantment { background-color: #148f77; }
+.spell-icon.transmutation { background-color: #ca6f1e; }
 
 .card-info h3 {
   margin: 0 0 4px 0;

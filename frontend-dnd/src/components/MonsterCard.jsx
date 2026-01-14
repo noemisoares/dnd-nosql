@@ -1,12 +1,17 @@
 import { getMonsterIcon } from '../utils/getIconPath';
 
 function MonsterCard({ monster }) {
+  const typeClass = monster.type?.toLowerCase();
+
   return (
     <div className="card">
-      <img
-        src={getMonsterIcon(monster)}
-        alt={monster.type || 'monster'}
-        className="card-icon"
+      <div
+        className={`card-icon monster-icon ${typeClass}`}
+        style={{
+          maskImage: `url(${getMonsterIcon(monster)})`,
+          WebkitMaskImage: `url(${getMonsterIcon(monster)})`,
+        }}
+        aria-label={monster.type || 'monster'}
       />
 
       <div className="card-info">

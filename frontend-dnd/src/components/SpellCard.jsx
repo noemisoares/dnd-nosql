@@ -1,12 +1,17 @@
 import { getSpellIcon } from '../utils/getIconPath';
 
 function SpellCard({ spell }) {
+  const schoolClass = spell.school?.name?.toLowerCase();
+
   return (
     <div className="card">
-      <img
-        src={getSpellIcon(spell)}
-        alt={spell.school?.name || 'spell'}
-        className="card-icon"
+      <div
+        className={`card-icon spell-icon ${schoolClass}`}
+        style={{
+          maskImage: `url(${getSpellIcon(spell)})`,
+          WebkitMaskImage: `url(${getSpellIcon(spell)})`,
+        }}
+        aria-label={spell.school?.name || 'spell'}
       />
 
       <div className="card-info">
