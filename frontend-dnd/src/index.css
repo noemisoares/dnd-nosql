@@ -57,17 +57,17 @@ a {
 
 .search-bar {
   margin: 2rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  max-width: 1100px;
+  max-width: 1200px;
   padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1.5fr auto auto;
+  align-items: center;
+  gap: 1rem;
 }
 
 .search-input {
   width: 100%;
-  max-width: 520px;
+  max-width: 100%;
   padding: 12px 16px 12px 42px;
   border-radius: 12px;
   background-color: rgba(18, 18, 18, 0.95);
@@ -89,8 +89,9 @@ a {
 
 .search-filters {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .search-filters select {
@@ -100,4 +101,31 @@ a {
   border: 1px solid var(--border-card);
   color: var(--accent-gold);
   cursor: pointer;
+}
+
+.content-toggle {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.content-toggle button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid var(--border-card);
+  color: var(--accent-gold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.content-toggle button:hover {
+  border-color: var(--accent-gold);
+}
+
+.content-toggle button.active {
+  background: linear-gradient(135deg, #3a2a12, #1a1206);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
 }

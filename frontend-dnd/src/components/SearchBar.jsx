@@ -5,6 +5,8 @@ function SearchBar({
   onSpellSchoolChange,
   monsterType,
   onMonsterTypeChange,
+  contentView,
+  onContentViewChange,
 }) {
   return (
     <div className="search-bar">
@@ -21,7 +23,7 @@ function SearchBar({
           value={spellSchool}
           onChange={(e) => onSpellSchoolChange(e.target.value)}
         >
-          <option value="all">Todas as escolas</option>
+          <option value="all">Todas as magias</option>
           <option value="abjuration">Abjuration</option>
           <option value="conjuration">Conjuration</option>
           <option value="divination">Divination</option>
@@ -52,6 +54,29 @@ function SearchBar({
           <option value="plant">Plant</option>
           <option value="undead">Undead</option>
         </select>
+      </div>
+
+      <div className="content-toggle">
+        <button
+          className={contentView === "all" ? "active" : ""}
+          onClick={() => onContentViewChange("all")}
+        >
+          Todos
+        </button>
+
+        <button
+          className={contentView === "spells" ? "active" : ""}
+          onClick={() => onContentViewChange("spells")}
+        >
+          Magias
+        </button>
+
+        <button
+          className={contentView === "monsters" ? "active" : ""}
+          onClick={() => onContentViewChange("monsters")}
+        >
+          Monstros
+        </button>
       </div>
     </div>
   );
