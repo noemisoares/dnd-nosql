@@ -1,23 +1,19 @@
-const connectMongo = require("../lib/mongodb");
-const Spell = require("../lib/Spell");
+import { connectDB } from "../lib/mongodb";
+import Spell from "../models/Spell";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
-    await connectMongo();
+    await connectDB();
 
-    const { level, school, name } = req.query;
+    const { school, name } = req.query;
     const filter = {};
 
-    if (typeof level !== "undefined" && level !== "all") {
-      filter.level = Number(level);
-    }
-
     if (school && school !== "all") {
-      filter["school.name"] = { $regex: school, $options: "i" };
+      filter["school.name"] = new RegExp(school, "i");
     }
 
     if (name) {
-      filter.name = { $regex: name, $options: "i" };
+      filter.name = new RegExp(name, "i");
     }
 
     const spells = await Spell.find(filter)
@@ -27,6 +23,6 @@ module.exports = async function handler(req, res) {
     res.status(200).json(spells);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Erro ao buscar magias" });
+    res.status(500).json({ error: "Internal server error" });
   }
-};
+}

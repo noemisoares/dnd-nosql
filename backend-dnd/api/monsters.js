@@ -1,19 +1,19 @@
-const connectMongo = require("../lib/mongodb");
-const Monster = require("../lib/Monster");
+import { connectDB } from "../lib/mongodb";
+import Monster from "../models/Monster";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
-    await connectMongo();
+    await connectDB();
 
     const { type, name } = req.query;
     const filter = {};
 
     if (type && type !== "all") {
-      filter.type = { $regex: type, $options: "i" };
+      filter.type = new RegExp(type, "i");
     }
 
     if (name) {
-      filter.name = { $regex: name, $options: "i" };
+      filter.name = new RegExp(name, "i");
     }
 
     const monsters = await Monster.find(filter)
@@ -23,6 +23,6 @@ module.exports = async function handler(req, res) {
     res.status(200).json(monsters);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Erro ao buscar monstros" });
+    res.status(500).json({ error: "Internal server error" });
   }
-};
+}
