@@ -1,0 +1,10 @@
+{
+  "name": "backend-dnd",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.0.0"
+  }
+}
