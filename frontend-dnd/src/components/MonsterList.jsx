@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react';
-import MonsterCard from './MonsterCard';
-import './MonsterList.css';
+import { useEffect, useState } from "react";
+import MonsterCard from "./MonsterCard";
+import { fetchMonsters } from "../utils/api";
+import "./MonsterList.css";
 
 function MonsterList({ search, type }) {
   const [monsters, setMonsters] = useState([]);
 
   useEffect(() => {
-    fetch("/api/monsters")
-      .then((res) => res.json())
+    fetchMonsters()
       .then((data) =>
         setMonsters(
           Array.isArray(data) ? data : data.results || data.monsters || []
         )
       )
-      .catch((err) => console.error("Erro ao buscar monstros:", err));
+      .catch(console.error);
   }, []);
+
+  console.log("MONSTERS STATE:", monsters);
 
   const filteredMonsters = monsters.filter((monster) => {
     const matchesName = monster.name

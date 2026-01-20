@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import SpellCard from "./SpellCard";
+import { fetchSpells } from "../utils/api";
 import "./SpellList.css";
 
 function SpellList({ search, school }) {
   const [spells, setSpells] = useState([]);
 
   useEffect(() => {
-    fetch("/api/spells")
-      .then((res) => res.json())
+    fetchSpells()
       .then((data) =>
         setSpells(
           Array.isArray(data) ? data : data.results || data.spells || []
         )
       )
-      .catch((err) => console.error("Erro ao buscar magias:", err));
+      .catch(console.error);
   }, []);
+
+  console.log("SPELLS STATE:", spells);
 
   const filteredSpells = spells.filter((spell) => {
     const matchesName = spell.name.toLowerCase().includes(search.toLowerCase());

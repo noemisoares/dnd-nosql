@@ -1,13 +1,16 @@
 import { connectDB } from "../../lib/mongodb.js";
 import Monster from "../../lib/Monster.js";
+import { allowCors } from "../../lib/cors.js";
 
 export default async function handler(req, res) {
+  allowCors(res);
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   try {
     await connectDB();
-
-    if (req.method !== "GET") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
 
     const monsters = await Monster.find({})
       .select("index name type challenge_rating")
