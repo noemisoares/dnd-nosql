@@ -2,34 +2,155 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Backend NoSQL D&D</title>
+    <title>Backend NoSQL • D&D</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
+      :root {
+        --bg-main: #0f0f0f;
+        --bg-card: #1c1c1c;
+        --border-card: rgba(255, 255, 255, 0.04);
+        --text-main: #e6e6e6;
+        --text-muted: #9a9a9a;
+        --accent-red: #c00000;
+        --accent-gold: #c9aa71;
+        --glow-gold: rgba(201, 170, 113, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        background: #0f172a;
-        color: white;
-        font-family: sans-serif;
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(
+            circle at top,
+            rgba(201, 170, 113, 0.05),
+            transparent 60%
+          ),
+          var(--bg-main);
+        color: var(--text-main);
+        font-family: "Inter", sans-serif;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(0, 0, 0, 0.4)
+        ),
+        var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 16px;
+        padding: 48px 56px;
+        min-width: 340px;
+
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
-        gap: 16px;
+        gap: 28px;
+
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.02),
+          0 0 40px var(--glow-gold);
       }
+
+      h1 {
+        margin: 0;
+        font-family: "Cinzel", serif;
+        font-size: 28px;
+        letter-spacing: 1px;
+        color: var(--accent-gold);
+        text-align: center;
+      }
+
+      p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 14px;
+        text-align: center;
+        max-width: 320px;
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+      }
+
       a {
-        padding: 12px 20px;
-        background: #6366f1;
-        color: white;
         text-decoration: none;
-        border-radius: 8px;
+        text-align: center;
+        padding: 14px 20px;
+        border-radius: 10px;
+
+        font-family: "Cinzel", serif;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+
+        color: var(--bg-main);
+        background: linear-gradient(
+          180deg,
+          #e0c48a,
+          var(--accent-gold)
+        );
+
+        border: 1px solid rgba(0, 0, 0, 0.4);
+
+        transition: transform 0.15s ease, box-shadow 0.15s ease,
+          filter 0.15s ease;
       }
+
       a:hover {
-        background: #4f46e5;
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+        box-shadow:
+          0 8px 24px rgba(201, 170, 113, 0.35),
+          0 0 0 1px rgba(201, 170, 113, 0.4);
+      }
+
+      a:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(201, 170, 113, 0.2);
+      }
+
+      footer {
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--text-muted);
+        opacity: 0.8;
       }
     </style>
   </head>
+
   <body>
-    <h1>Backend NoSQL de D&D</h1>
-    <a href="/api/monsters">Ver Monsters</a>
-    <a href="/api/spells">Ver Spells</a>
+    <main class="card">
+      <h1>Backend NoSQL de D&D</h1>
+
+      <p>
+        API serverless com monstros e magias do Dungeons & Dragons,
+        persistidos em MongoDB.
+      </p>
+
+      <div class="actions">
+        <a href="/api/monsters">📖 Bestiário</a>
+        <a href="/api/spells">✨ Grimório</a>
+      </div>
+
+      <footer>
+        Powered by MongoDB • Vercel • Node.js
+      </footer>
+    </main>
   </body>
 </html>

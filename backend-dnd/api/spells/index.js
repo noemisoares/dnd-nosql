@@ -1,5 +1,5 @@
-import { connectDB } from "../../lib/mongodb";
-import Spell from "../../lib/Spell";
+import { connectDB } from "../../lib/mongodb.js";
+import Spell from "../../lib/Spell.js";
 
 export default async function handler(req, res) {
   try {
