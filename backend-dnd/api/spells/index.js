@@ -2,22 +2,20 @@ import { connectDB } from "../../lib/mongodb";
 import Spell from "../../lib/Spell";
 
 export default async function handler(req, res) {
-  await connectDB();
+  try {
+    await connectDB();
 
-  const { school, name } = req.query;
-  const filter = {};
+    if (req.method !== "GET") {
+      return res.status(405).json({ error: "Method not allowed" });
+    }
 
-  if (school && school !== "all") {
-    filter["school.name"] = new RegExp(school, "i");
+    const spells = await Spell.find({})
+      .select("index name level school")
+      .limit(200);
+
+    res.status(200).json(spells);
+  } catch (error) {
+    console.error("Spells error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
-
-  if (name) {
-    filter.name = new RegExp(name, "i");
-  }
-
-  const spells = await Spell.find(filter)
-    .limit(300)
-    .select("index name level school");
-
-  res.status(200).json(spells);
 }
